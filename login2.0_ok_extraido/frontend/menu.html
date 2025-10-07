@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>MILKMOO - Cardápio</title>
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <header>
+        <div class="topo">
+            <div class="logo">
+                <h1>🥛 MILKMOO</h1>
+                <p>Franquia de Milkshakes</p>
+            </div>
+            <div class="user-info">
+                <span id="userName">Visitante</span>
+                <button aria-label="Carrinho" title="Carrinho" onclick="openCart()" style="margin-right:10px;font-size:20px;background:none;border:none;cursor:pointer;position:relative">🛒<span id="cartBadge" style="position:absolute;top:-6px;right:-6px;background:#dc3545;color:#fff;border-radius:10px;padding:0 6px;font-size:12px;display:none">0</span></button>
+                <a href="./login/sobre.html" style="margin-right:10px;text-decoration:none;font-weight:600;">Sobre nós</a>
+                <select id="oUsuario" onchange="handleUserAction(this.value)">
+                    <option value="">Menu</option>
+                    <option value="login">Fazer Login</option>
+                    <option value="carrinho">Ver Carrinho</option>
+                    <option value="sair">Sair</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Deliciosos Milkshakes Artesanais</h2>
+                <p>Experimente nossos sabores únicos e refrescantes</p>
+            </div>
+        </section>
+
+        <section class="menu-section">
+            <h2>Nosso Cardápio</h2>
+            <div class="menu-filters">
+                <button class="filter-btn active" onclick="filterProducts('todos')">Todos</button>
+                <button class="filter-btn" onclick="filterProducts('Milkshake')">Milkshakes</button>
+                <button class="filter-btn" onclick="filterProducts('Acompanhamento')">Acompanhamentos</button>
+            </div>
+            
+            <div id="productsContainer" class="products-grid">
+                <!-- Produtos serão carregados aqui -->
+            </div>
+        </section>
+
+        <!-- Carrinho de Compras -->
+        <div id="cartModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>🛒 Seu Carrinho</h3>
+                    <span class="close" onclick="closeCart()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItems">
+                        <!-- Itens do carrinho serão inseridos aqui -->
+                    </div>
+                    <div class="cart-total">
+                        <h4>Total: R$ <span id="cartTotal">0,00</span></h4>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="closeCart()">Continuar Comprando</button>
+                    <button class="btn-primary" onclick="proceedToCheckout()" id="checkoutBtn" disabled>Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Login Necessário -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>🔐 Login Necessário</h3>
+                    <span class="close" onclick="closeLoginModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>Você precisa fazer login para finalizar sua compra.</p>
+                    <p>Faça login como cliente para continuar ou como funcionário para acessar o sistema.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="closeLoginModal()">Cancelar</button>
+                    <button class="btn-primary" onclick="goToLogin()">Fazer Login</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MILKMOO - Franquia de Milkshakes. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="./menu.js"></script>
+</body>
+</html>
